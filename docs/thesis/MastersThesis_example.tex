@@ -26,8 +26,8 @@
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
 
 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \department{Department of theoretical computer science}
 \title{Example Thesis}
 \authorGN{Jan} %author's given name/names
@@ -49,27 +49,17 @@ is examination of word-based dictionary data compression methods, possibilities 
 % \newacronym{RLE}{RLE}{Run-Length Encoding}
 
 \begin{introduction}
-	This text is based on diploma thesis of Jakub Jaro{\v s}.
 	\section{Motivation and objectives}
-
-	The amount of information is rapidly growing up. The main technique of reducing loads of space needed to store data or reducing time needed to transmit data is data compression. The size of data reduction is achieved by removing the excessive information.
-	The efficiency of data compression algorithms can be compared by compression ratio, time of compression and/or decompression and size of used memory. Each of these consequences unfortunately mutually interacts.
-	The data compression algorithms can be divided by many factors, for example by the information loss: lossless compression algorithms and lossy ones. Lossless means that the compression processes is fully reversible and decompressed data is identical to the original data. These algorithms are best suited for documents, programs and other data where loss is unacceptable. Lossy algorithms irreversibly remove some parts of data and only an approximation of the original data can be reconstructed. These algorithms achieve better compression efficiency than lossless algorithms, but compression is limited to branches where some loss is acceptable (audio, video, images etc.).
-	This thesis focuses on lossless algorithms especially the dictionary ones, which are established on likenesses of compressed, mostly textual, data, and their properties.
 
 	\section{Problem statements}
 
-	The main sight of the thesis is a part of textual algorithms named word-based which deals with texts in languages (natural, formal etc.). All of texts in natural languages (and also in other languages) have a specific structure. They can be divided into sentences, which can finish by a period, a question mark, or an exclamation mark. Each sentence consists of words that are separated from each other by space and/or punctuation marks.
-	Word-based compression algorithms, where alphabet consists of words, take advantage of these strictly defined structures, repetitions of sequences of words and spaces, repetitions of whole sentences.
-	\section{State of the Art}
-	
-% 	There are two basic ways in the world of dictionary word-based algorithms. The both of them are based on dictionary method \gls{LZW}. The method Word-Based \gls{LZW}, independently presented by Horspool and Cormack \cite{HC92}, and Jiang and Jones \cite{JJ92} in 1992 as first, is adaptive version of mentioned algorithm. The main sight is recently concentred to word-based context methods of data compression and related word-based \textit{preprocessing} transformations, which reversibly transform a data into another form. The reverse process is called \textit{postprocessing} transformation. Affected data could be compressed with most of existing lossless data compression algorithms with better compression efficiency than it can be achieved using an unaltered data. 
+% 	There are two basic ways in the world of dictionary word-based algorithms. The both of them are based on dictionary method \gls{LZW}. The method Word-Based \gls{LZW}, independently presented by Horspool and Cormack \cite{HC92}, and Jiang and Jones \cite{JJ92} in 1992 as first, is adaptive version of mentioned algorithm. The main sight is recently concentred to word-based context methods of data compression and related word-based \textit{preprocessing} transformations, which reversibly transform a data into another form. The reverse process is called \textit{postprocessing} transformation. Affected data could be compressed with most of existing lossless data compression algorithms with better compression efficiency than it can be achieved using an unaltered data.
 \end{introduction}
 
 \chapter{Data compression}\label{textcompr}
 
 	This thesis was submitted at Czech Technical University in Prague (see Figure~\ref{fig:logo}).
-	
+
 	\begin{figure}\centering
 		\includegraphics{cvut-logo-bw}
 		\caption{CTU logo}\label{fig:logo}
@@ -102,7 +92,7 @@ The code $K=(S,C,f)$ is \textit{uniquely decodable}, when all strings $x \in C^+
 \end{equation}
 
 The compression efficiency can be expressed by many units of measure. The amount of data reduction gained by the compression process is \textit{compression ratio}. This compression ratio is a ratio of the length of compressed data to the original size of data (Formula \ref{eq:comrat}).
-For example, the compression ratio is measured in $bpb$ (bits per bit), $bpc$ (bits per character) or $bpp$ (bits per pixel). 
+For example, the compression ratio is measured in $bpb$ (bits per bit), $bpc$ (bits per character) or $bpp$ (bits per pixel).
 
 The compression algorithms use specific \textit{compression models} to encode the data. For example, these models could follows:
 \begin{itemize}
@@ -112,7 +102,7 @@ The compression algorithms use specific \textit{compression models} to encode th
 \end{itemize}
 
 	\subsection{Entropy}
-The entropy is only theoretical minimal length but it is possible to reach this border in some special cases. It is very difficult to measure real entropy of source message in common usage, because not only statistical model of 0th order (context of source units with length 1) exists. For example, the probabilities of appearances of source units pairs (context of source units with length 2) are considered in 1st order statistical model. 
+The entropy is only theoretical minimal length but it is possible to reach this border in some special cases. It is very difficult to measure real entropy of source message in common usage, because not only statistical model of 0th order (context of source units with length 1) exists. For example, the probabilities of appearances of source units pairs (context of source units with length 2) are considered in 1st order statistical model.
 
 	\subsection{Classification}
 
@@ -170,21 +160,10 @@ There are parameters of the computer used for tests shown in Table \ref{tab:PCpa
 
 The integers encoding of indexes of phrases from the word (non-word) dictionary is possible cause of the only average results of compression ratio of implemented algorithms. The decision is to get the distribution of indexes during the encoding process (and decoding process too). The length of indexes located in shown graphs is only hypothetical---the binary code with minimal length.
 
-The graphs of index distribution also shows the differencies between the algorithms with sorted dictionaries (\textit{WLZWS} and \textit{WLZWES}) and the algorithms with unsorted dictionaries (\textit{WLZW} and \textit{WLZWE}). The most frequently used phrases are moved to the front of dictionary in algorithms with sorted dictionary so they get lower indexes. This feature is demonstrated by the growth of number of indexes at the beginning of the distribution. The compression process of algorithms with sorted dictionaries becomes more efficient when the code with variable length of code words (Fibonacci code) is used but the compression efficiency is supposed to be the same at the transition from the \textit{WLZWE2} algorithm to the \textit{WLZWES2} algorithm---the encoding by block code. 
+The graphs of index distribution also shows the differencies between the algorithms with sorted dictionaries (\textit{WLZWS} and \textit{WLZWES}) and the algorithms with unsorted dictionaries (\textit{WLZW} and \textit{WLZWE}). The most frequently used phrases are moved to the front of dictionary in algorithms with sorted dictionary so they get lower indexes. This feature is demonstrated by the growth of number of indexes at the beginning of the distribution. The compression process of algorithms with sorted dictionaries becomes more efficient when the code with variable length of code words (Fibonacci code) is used but the compression efficiency is supposed to be the same at the transition from the \textit{WLZWE2} algorithm to the \textit{WLZWES2} algorithm---the encoding by block code.
 
 \begin{conclusion}
-	The word-based dictionary data compression algorithms (a part of lossless data compression) are the subject of this thesis. The lossless data compression is a very important field of research because the data compression allows to reduce the amount of space needed to store data.
 
-	The background of data compression field was presented in Chapter~\ref{textcompr}. There are basic notions and definitions followed by description of character-based dictionary algorithms. The word-based dictionary compression methods were investigated and discussed at the end of this chapter too.
-
-% 	There is the investigation of index distribution of tested files in Section \ref{sec:distr}. It led to the new modification of semi-adaptive word-based \gls{LZW} algorithm---\textit{WLZWE2}. The compression efficiency of this algorithm applied to the large files is better than the other implemented algorithms. However, the compression efficiency of \textit{WLZWE2} algorithm is much worse when it is applied to the small files. The experiments with \textit{WLZWE2} and \textit{WLZWES2} algorithms confirm the assumption from Section \ref{sec:distr}---the compression efficiency of version with unsorted dictionaries (\textit{WLZWE2}) is analogous to version with sorted ones (\textit{WLZWES2}).
-
-	The testing of memory used during compression and/or decompression process is one of the possibilities of further research. The experiments with files of greater size or multilingual files could be also good opportunity to gain new improvements of algorithms. The static part of dictionaries could improve the compression efficiency too.
-
-	The implemented methods achieve fairly good compression ratio (25--30$\%$ at large files) with acceptable compression and decompression time. There are possibilities of further improvements especially at semi-adaptive methods. However, the gain of these improvements is not good enough to top the compression efficiency of other lossless data compression methods (context methods from PPM family). The results of implemented algorithms were not as good as it was expected but the work on this thesis showed new ways of possible further research---word-based version of grammar-based compression algorithms and another possibilities in the field of word-based context methods of data compression.
-
-	The Gnuplot 4.2 utility was very useful for generation of graphs in this thesis. There was the drawing editor Ipe 6.0 used for figures creation.
-	\nocite{Po01}
 \end{conclusion}
 
 \bibliographystyle{iso690.bst}
@@ -202,23 +181,6 @@ Visualise the contents of enclosed media. Use of \verb|dirtree| is recommended. 
 \begin{figure}
 	\dirtree{%
 		.1 readme.txt\DTcomment{the file with CD contents description}.
-		.1 data\DTcomment{the data files directory}.
-		.2 graphs\DTcomment{the directory of graphs of experiments}.
-		.3 *.eps\DTcomment{the B/W graphs}.
-		.3 *.png\DTcomment{the color graphs}.
-		.3 *.dat\DTcomment{the graphs data files}.
-		.1 exe\DTcomment{the directory with executable WBDCM program}.
-		.2 wbdcm\DTcomment{the WBDCM program executable (UNIX)}.
-		.2 wbdcm.exe\DTcomment{the WBDCM program executable (Windows)}.
-		.1 src\DTcomment{the directory of source codes}.
-		.2 wbdcm\DTcomment{the directory of WBDCM program}.
-		.3 Makefile\DTcomment{the makefile of WBDCM program (UNIX)}.
-		.2 thesis\DTcomment{the directory of \LaTeX{} source codes of the thesis}.
-		.3 figures\DTcomment{the thesis figures directory}.
-		.3 *.tex\DTcomment{the \LaTeX{} source code files of the thesis}.
-		.1 text\DTcomment{the thesis text directory}.
-		.2 thesis.pdf\DTcomment{the Diploma thesis in PDF format}.
-		.2 thesis.ps\DTcomment{the Diploma thesis in PS format}.
 	}
 \end{figure}
 
